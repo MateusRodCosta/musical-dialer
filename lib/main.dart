@@ -65,11 +65,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return new Scaffold(
-      appBar: new AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: new Text(widget.title),
-      ),
+        appBar: new AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: new Text(widget.title),
+        ),
+        /*
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -104,6 +105,30 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      */
+        body: new Column(
+          children: <Widget>[
+            new Row(children: <Widget>[
+              new Text('1'),
+              new Text('2'),
+              new Text('3'),
+            ]),
+            new Row(children: <Widget>[
+              new Text('4'),
+              new Text('5'),
+              new Text('6'),
+            ]),
+            new Row(children: <Widget>[
+              new Text('7'),
+              new Text('8'),
+              new Text('9'),
+            ]),
+            new Row(children: <Widget>[
+              new Text('*'),
+              new Text('0'),
+              new Text('#'),
+            ]),
+          ],
+        ));
   }
 }
