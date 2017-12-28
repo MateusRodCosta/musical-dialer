@@ -26,39 +26,52 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  _buildDialerButton(String label, String altValue) {
+
+    return new Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        new Text(label),
+      ],
+    );
+
+  }
+
+  _buildDialer() {
+    return new GridView.count(
+      scrollDirection: Axis.vertical,
+      crossAxisCount: 3,
+      children: <Widget>[
+        _buildDialerButton('1', null),
+        _buildDialerButton('2', "ABC"),
+        _buildDialerButton('3', "DEF"),
+        _buildDialerButton('4', "GHI"),
+        _buildDialerButton('5', "JKL"),
+        _buildDialerButton('6', "MNO"),
+        _buildDialerButton('7', "PQRS"),
+        _buildDialerButton('8', "TUV"),
+        _buildDialerButton('9', "WXYZ"),
+        _buildDialerButton('*', null),
+        _buildDialerButton('0', "+"),
+        _buildDialerButton('#', null),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Container(
+        padding: new EdgeInsets.symmetric(
+          horizontal: 8.0,
+          vertical: 16.0,
         ),
-        body: new Container(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: new Column(
-              children: <Widget>[
-                new Row(children: <Widget>[
-                  new Text('1'),
-                  new Text('2'),
-                  new Text('3'),
-                ]),
-                new Row(children: <Widget>[
-                  new Text('4'),
-                  new Text('5'),
-                  new Text('6'),
-                ]),
-                new Row(children: <Widget>[
-                  new Text('7'),
-                  new Text('8'),
-                  new Text('9'),
-                ]),
-                new Row(children: <Widget>[
-                  new Text('*'),
-                  new Text('0'),
-                  new Text('#'),
-                ]),
-              ],
-            )
-        )
+        alignment: AlignmentDirectional.bottomCenter,
+        child: _buildDialer(),
+      ),
     );
   }
 }
