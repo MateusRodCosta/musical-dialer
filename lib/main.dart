@@ -1,6 +1,41 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:audioplayer/audioplayer.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() => runApp(new DialpadApp());
+
+AudioPlayer audioPlayer = new AudioPlayer();
+
+Future<ByteData> loadAsset(String key) async {
+  var fileName;
+  switch(key) {
+    case '*':
+      fileName = "Star";
+      break;
+    case '#':
+      fileName = "-";
+      break;
+    default:
+      fileName = key;
+      break;
+  }
+  return await rootBundle.load('sounds/Dtmf$fileName.ogg');
+}
+
+Future playLocal(String key) async {
+  final file = new File('${(await getTemporaryDirectory()).path}/music.mp3');
+  await file.writeAsBytes((await loadAsset(key)).buffer.asUint8List());
+  final result = await audioPlayer.play(file.path, isLocal: true);
+}
+
+_playTone(String key) {
+  audioPlayer.stop();
+  playLocal(key);
+}
 
 class DialpadApp extends StatelessWidget {
   @override
@@ -26,12 +61,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+
+
   _buildDialerButton(String label, String altValue) {
 
     return new Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        new Text(label),
+        new FlatButton(
+            child: new Text(label),
+            onPressed: _playTone(label),
+        ),
       ],
     );
 
