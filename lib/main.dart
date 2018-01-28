@@ -61,41 +61,50 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class DialerButton extends StatelessWidget {
+  final String label;
+  final String altValue;
 
+  DialerButton(this.label, this.altValue);
 
-
-  _buildDialerButton(String label, String altValue) {
-
-    return new Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        new FlatButton(
-            child: new Text(label),
-            onPressed: /*_playTone(label)*/ null,
-        ),
-      ],
-    );
-
+  @override
+  Widget build(BuildContext context) {
+    return new FlatButton(onPressed: null, child: _buildButtonContent());
   }
 
+  Widget _buildButtonContent() {
+    if (this.altValue == null) {
+      return new Text(this.label);
+    } else {
+      return new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Text(this.label),
+          new Text(this.altValue),
+        ],
+      );
+    }
+  }
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   _buildDialer() {
     return new GridView.count(
       scrollDirection: Axis.vertical,
       crossAxisCount: 3,
       children: <Widget>[
-        _buildDialerButton('1', null),
-        _buildDialerButton('2', "ABC"),
-        _buildDialerButton('3', "DEF"),
-        _buildDialerButton('4', "GHI"),
-        _buildDialerButton('5', "JKL"),
-        _buildDialerButton('6', "MNO"),
-        _buildDialerButton('7', "PQRS"),
-        _buildDialerButton('8', "TUV"),
-        _buildDialerButton('9', "WXYZ"),
-        _buildDialerButton('*', null),
-        _buildDialerButton('0', "+"),
-        _buildDialerButton('#', null),
+        new DialerButton('1', null),
+        new DialerButton('2', "ABC"),
+        new DialerButton('3', "DEF"),
+        new DialerButton('4', "GHI"),
+        new DialerButton('5', "JKL"),
+        new DialerButton('6', "MNO"),
+        new DialerButton('7', "PQRS"),
+        new DialerButton('8', "TUV"),
+        new DialerButton('9', "WXYZ"),
+        new DialerButton('*', null),
+        new DialerButton('0', "+"),
+        new DialerButton('#', null),
       ],
     );
   }
