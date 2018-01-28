@@ -117,8 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: new Container(
         padding: new EdgeInsets.symmetric(
-          horizontal: 8.0,
-          vertical: 16.0,
+          horizontal: 16.0,
+          vertical: 8.0,
         ),
         alignment: AlignmentDirectional.bottomCenter,
         child: _buildDialer(),
