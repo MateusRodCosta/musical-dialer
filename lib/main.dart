@@ -89,22 +89,36 @@ class DialerButton extends StatelessWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   _buildDialer() {
-    return new GridView.count(
-      scrollDirection: Axis.vertical,
-      crossAxisCount: 3,
+    return new Column(
       children: <Widget>[
-        new DialerButton('1', null),
-        new DialerButton('2', "ABC"),
-        new DialerButton('3', "DEF"),
-        new DialerButton('4', "GHI"),
-        new DialerButton('5', "JKL"),
-        new DialerButton('6', "MNO"),
-        new DialerButton('7', "PQRS"),
-        new DialerButton('8', "TUV"),
-        new DialerButton('9', "WXYZ"),
-        new DialerButton('*', null),
-        new DialerButton('0', "+"),
-        new DialerButton('#', null),
+        new Row(
+          children: <Widget>[
+            new DialerButton('1', null),
+            new DialerButton('2', "ABC"),
+            new DialerButton('3', "DEF"),
+          ],
+        ),
+        new Row(
+          children: <Widget>[
+            new DialerButton('4', "GHI"),
+            new DialerButton('5', "JKL"),
+            new DialerButton('6', "MNO"),
+          ],
+        ),
+        new Row(
+          children: <Widget>[
+            new DialerButton('7', "PQRS"),
+            new DialerButton('8', "TUV"),
+            new DialerButton('9', "WXYZ"),
+          ],
+        ),
+        new Row(
+          children: <Widget>[
+            new DialerButton('*', null),
+            new DialerButton('0', "+"),
+            new DialerButton('#', null),
+          ],
+        ),
       ],
     );
   }
