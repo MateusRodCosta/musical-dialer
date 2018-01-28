@@ -70,14 +70,11 @@ class DialerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new FlatButton(
-        onPressed: null,
-        child:
-            new Container(
-              height: 48.0,
-              width: 48.0,
-              child:
-              _buildButtonContent(),
-            ),
+      onPressed: null,
+      child: new Container(
+        height: 64.0,
+        child: _buildButtonContent(),
+      ),
     );
   }
 
@@ -104,30 +101,54 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         new Row(
           children: <Widget>[
-            new DialerButton('1', null),
-            new DialerButton('2', "ABC"),
-            new DialerButton('3', "DEF"),
+            new Expanded(
+              child: new DialerButton('1', null),
+            ),
+            new Expanded(
+              child: new DialerButton('2', "ABC"),
+            ),
+            new Expanded(
+              child: new DialerButton('3', "DEF"),
+            ),
           ],
         ),
         new Row(
           children: <Widget>[
-            new DialerButton('4', "GHI"),
-            new DialerButton('5', "JKL"),
-            new DialerButton('6', "MNO"),
+            new Expanded(
+              child: new DialerButton('4', "GHI"),
+            ),
+            new Expanded(
+              child: new DialerButton('5', "JKL"),
+            ),
+            new Expanded(
+              child: new DialerButton('6', "MNO"),
+            ),
           ],
         ),
         new Row(
           children: <Widget>[
-            new DialerButton('7', "PQRS"),
-            new DialerButton('8', "TUV"),
-            new DialerButton('9', "WXYZ"),
+            new Expanded(
+              child: new DialerButton('7', "PQRS"),
+            ),
+            new Expanded(
+              child: new DialerButton('8', "TUV"),
+            ),
+            new Expanded(
+              child: new DialerButton('9', "WXYZ"),
+            ),
           ],
         ),
         new Row(
           children: <Widget>[
-            new DialerButton('*', null),
-            new DialerButton('0', "+"),
-            new DialerButton('#', null),
+            new Expanded(
+              child: new DialerButton('*', null),
+            ),
+            new Expanded(
+              child: new DialerButton('0', "+"),
+            ),
+            new Expanded(
+              child: new DialerButton('#', null),
+            ),
           ],
         ),
       ],
