@@ -69,12 +69,23 @@ class DialerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new FlatButton(onPressed: null, child: _buildButtonContent());
+    return new FlatButton(
+        onPressed: null,
+        child:
+            new Container(
+              height: 48.0,
+              width: 48.0,
+              child:
+              _buildButtonContent(),
+            ),
+    );
   }
 
   Widget _buildButtonContent() {
     if (this.altValue == null) {
-      return new Text(this.label);
+      return new Center(
+        child: new Text(this.label),
+      );
     } else {
       return new Column(
         mainAxisAlignment: MainAxisAlignment.center,
