@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 
 void main() => runApp(new DialpadApp());
 
+/*
 AudioPlayer audioPlayer = new AudioPlayer();
 
 Future<ByteData> loadAsset(String key) async {
@@ -36,6 +37,7 @@ _playTone(String key) {
   audioPlayer.stop();
   playLocal(key);
 }
+*/
 
 class DialpadApp extends StatelessWidget {
   @override
@@ -70,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         new FlatButton(
             child: new Text(label),
-            onPressed: _playTone(label),
+            onPressed: /*_playTone(label)*/ null,
         ),
       ],
     );
