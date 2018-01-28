@@ -64,8 +64,9 @@ class MyHomePage extends StatefulWidget {
 class DialerButton extends StatelessWidget {
   final String label;
   final String altValue;
+  final IconData icon;
 
-  DialerButton(this.label, this.altValue);
+  DialerButton(this.label, this.altValue, this.icon);
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +79,16 @@ class DialerButton extends StatelessWidget {
     );
   }
 
+  Widget _buildSecondRowButton() {
+    if(this.icon != null) {
+      return new Icon(icon);
+    } else {
+      return new Text(this.altValue);
+    }
+  }
+
   Widget _buildButtonContent() {
-    if (this.altValue == null) {
+    if (this.altValue == null && this.icon == null) {
       return new Center(
         child: new Text(this.label),
       );
@@ -88,7 +97,7 @@ class DialerButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new Text(this.label),
-          new Text(this.altValue),
+          _buildSecondRowButton(),
         ],
       );
     }
@@ -102,52 +111,52 @@ class _MyHomePageState extends State<MyHomePage> {
         new Row(
           children: <Widget>[
             new Expanded(
-              child: new DialerButton('1', null),
+              child: new DialerButton('1', null, Icons.voicemail),
             ),
             new Expanded(
-              child: new DialerButton('2', "ABC"),
+              child: new DialerButton('2', "ABC", null),
             ),
             new Expanded(
-              child: new DialerButton('3', "DEF"),
-            ),
-          ],
-        ),
-        new Row(
-          children: <Widget>[
-            new Expanded(
-              child: new DialerButton('4', "GHI"),
-            ),
-            new Expanded(
-              child: new DialerButton('5', "JKL"),
-            ),
-            new Expanded(
-              child: new DialerButton('6', "MNO"),
+              child: new DialerButton('3', "DEF", null),
             ),
           ],
         ),
         new Row(
           children: <Widget>[
             new Expanded(
-              child: new DialerButton('7', "PQRS"),
+              child: new DialerButton('4', "GHI", null),
             ),
             new Expanded(
-              child: new DialerButton('8', "TUV"),
+              child: new DialerButton('5', "JKL", null),
             ),
             new Expanded(
-              child: new DialerButton('9', "WXYZ"),
+              child: new DialerButton('6', "MNO", null),
             ),
           ],
         ),
         new Row(
           children: <Widget>[
             new Expanded(
-              child: new DialerButton('*', null),
+              child: new DialerButton('7', "PQRS", null),
             ),
             new Expanded(
-              child: new DialerButton('0', "+"),
+              child: new DialerButton('8', "TUV", null),
             ),
             new Expanded(
-              child: new DialerButton('#', null),
+              child: new DialerButton('9', "WXYZ", null),
+            ),
+          ],
+        ),
+        new Row(
+          children: <Widget>[
+            new Expanded(
+              child: new DialerButton('*', null, null),
+            ),
+            new Expanded(
+              child: new DialerButton('0', "+", null),
+            ),
+            new Expanded(
+              child: new DialerButton('#', null, null),
             ),
           ],
         ),
