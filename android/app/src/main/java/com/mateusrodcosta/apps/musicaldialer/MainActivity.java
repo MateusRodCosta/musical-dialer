@@ -1,4 +1,4 @@
-package com.yourcompany.musicaldialer;
+package com.mateusrodcosta.apps.musicaldialer;
 
 import android.os.Bundle;
 
